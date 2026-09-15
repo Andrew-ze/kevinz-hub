@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Admin Login | Kevinz Hub</title><link rel="stylesheet" href="/css/style.css"></head>
+<body><main class="section container"><h1>Administrator Login</h1><form id="login" class="form-card"><label>Email</label><input type="email" name="email" required><label>Password</label><input type="password" name="password" required><button class="btn">Login</button><p id="message"></p></form></main>
+<script src="/js/main.js"></script><script>
+document.getElementById("login").addEventListener("submit",async e=>{
+ e.preventDefault(); const body=Object.fromEntries(new FormData(e.target).entries());
+ try { await getJSON("/api/auth/login",{method:"POST",body:JSON.stringify(body)}); location.href="/admin/dashboard.html"; }
+ catch(err){document.getElementById("message").textContent=err.message;}
+});
+</script></body></html>

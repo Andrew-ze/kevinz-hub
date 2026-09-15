@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Cart | Kevinz Hub</title><link rel="stylesheet" href="/css/style.css"></head>
+<body><nav class="navbar"><div class="container nav-inner"><a class="logo" href="/">Kevinz Hub</a><div class="nav-links"><a href="/">Home</a><a href="/products.html">Products</a></div></div></nav>
+<main class="section container"><h1>Your Cart</h1><div id="cart"></div></main>
+<script src="/js/main.js"></script><script>
+function renderCart() {
+ const cart = getCart();
+ if (!cart.length) { document.getElementById("cart").innerHTML="<p>Your cart is empty.</p>"; return; }
+ let total=0;
+ const rows=cart.map(item=>{total+=Number(item.price)*item.quantity;return `<tr><td>${item.name}</td><td>${item.quantity}</td><td>${money(item.price*item.quantity)}</td></tr>`}).join("");
+ document.getElementById("cart").innerHTML=`<table><tr><th>Product</th><th>Qty</th><th>Total</th></tr>${rows}</table><h2>${money(total)}</h2><a class="btn" href="/checkout.html">Checkout</a> <button class="btn secondary" onclick="clearCart();renderCart()">Clear cart</button>`;
+}
+renderCart();
+</script></body></html>

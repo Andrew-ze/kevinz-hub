@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Manage Products</title><link rel="stylesheet" href="/css/style.css"></head>
+<body><main class="section container"><h1>Manage Products</h1><a href="/admin/dashboard.html">Dashboard</a><form id="productForm" class="form-card"><input name="name" placeholder="Product name" required><input name="category" placeholder="Category" required><textarea name="description" placeholder="Description"></textarea><input name="price" type="number" placeholder="Price" required><input name="image_url" placeholder="Image URL"><input name="stock" type="number" placeholder="Stock"><button class="btn">Add product</button></form><div id="list" class="grid"></div></main>
+<script src="/js/main.js"></script><script>
+async function load(){const products=await getJSON("/api/products");document.getElementById("list").innerHTML=products.map(p=>`<div class="card"><div class="card-body"><h3>${p.name}</h3><p>${money(p.price)} | Stock: ${p.stock}</p><button class="btn secondary" onclick="removeProduct(${p.id})">Delete</button></div></div>`).join("");}
+document.getElementById("productForm").addEventListener("submit",async e=>{e.preventDefault();try{await getJSON("/api/products",{method:"POST",body:JSON.stringify(Object.fromEntries(new FormData(e.target).entries()))});e.target.reset();load();}catch(err){alert(err.message);}});
+async function removeProduct(id){if(confirm("Delete this product?")){await getJSON("/api/products/"+id,{method:"DELETE"});load();}}
+load();
+</script></body></html>

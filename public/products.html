@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Products | Kevinz Hub</title><link rel="stylesheet" href="/css/style.css"></head>
+<body><nav class="navbar"><div class="container nav-inner"><a class="logo" href="/">Kevinz Hub</a><div class="nav-links"><a href="/">Home</a><a href="/products.html">Products</a><a href="/cart.html">Cart</a></div></div></nav>
+<main class="section container"><h1>Our Products</h1><div id="products" class="grid">Loading products...</div></main>
+<script src="/js/main.js"></script><script>
+getJSON("/api/products").then(products => {
+ document.getElementById("products").innerHTML = products.length ? products.map(productCard).join("") : "<p>No products available yet.</p>";
+}).catch(err => document.getElementById("products").innerHTML = `<p>${err.message}</p>`);
+</script></body></html>

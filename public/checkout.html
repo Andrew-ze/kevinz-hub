@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Checkout | Kevinz Hub</title><link rel="stylesheet" href="/css/style.css"></head>
+<body><nav class="navbar"><div class="container nav-inner"><a class="logo" href="/">Kevinz Hub</a><a href="/cart.html">Back to cart</a></div></nav>
+<main class="section container"><h1>Checkout</h1><form id="checkout" class="form-card">
+<label>Full name</label><input name="customer_name" required>
+<label>Email</label><input type="email" name="customer_email" required>
+<label>Phone number</label><input name="customer_phone" required>
+<label>Delivery address</label><textarea name="delivery_address" required></textarea>
+<button class="btn">Place order</button>
+<p id="message"></p></form></main>
+<script src="/js/main.js"></script><script>
+document.getElementById("checkout").addEventListener("submit", async e=>{
+ e.preventDefault();
+ const form=new FormData(e.target);
+ const body=Object.fromEntries(form.entries());
+ body.items=getCart().map(item=>({product_id:item.id,quantity:item.quantity}));
+ try {
+  const result=await getJSON("/api/orders",{method:"POST",body:JSON.stringify(body)});
+  clearCart();
+  location.href=`/payment.html?order_id=${result.order_id}&amount=${result.total_amount}`;
+ } catch(err){document.getElementById("message").textContent=err.message;}
+});
+</script></body></html>
