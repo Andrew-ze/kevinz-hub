@@ -6,4 +6,6 @@ async function load(){const products=await getJSON("/api/products");document.get
 document.getElementById("productForm").addEventListener("submit",async e=>{e.preventDefault();try{await getJSON("/api/products",{method:"POST",body:JSON.stringify(Object.fromEntries(new FormData(e.target).entries()))});e.target.reset();load();}catch(err){alert(err.message);}});
 async function removeProduct(id){if(confirm("Delete this product?")){await getJSON("/api/products/"+id,{method:"DELETE"});load();}}
 load();
-</script></body></html>
+</script>
+  <script src="/js/footer.js"></script>
+</body></html>
