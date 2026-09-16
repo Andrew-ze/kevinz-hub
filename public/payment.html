@@ -19,4 +19,6 @@ document.getElementById("payment").addEventListener("submit",async e=>{
  try { const result=await getJSON("/api/payments",{method:"POST",body:JSON.stringify(body)}); document.getElementById("message").textContent=result.message; e.target.reset(); }
  catch(err){document.getElementById("message").textContent=err.message;}
 });
-</script></body></html>
+</script>
+ <script src="/js/footer.js"></script>
+</body></html>
