@@ -7,4 +7,6 @@ document.getElementById("login").addEventListener("submit",async e=>{
  try { await getJSON("/api/auth/login",{method:"POST",body:JSON.stringify(body)}); location.href="/admin/dashboard.html"; }
  catch(err){document.getElementById("message").textContent=err.message;}
 });
-</script></body></html>
+</script>
+ <script src="/js/footer.js"></script>
+</body></html>
