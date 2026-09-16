@@ -3,4 +3,6 @@
 <body><main class="section container"><h1>Orders</h1><a href="/admin/dashboard.html">Dashboard</a><div id="orders"></div></main>
 <script src="/js/main.js"></script><script>
 getJSON("/api/orders").then(rows=>{document.getElementById("orders").innerHTML=`<table><tr><th>ID</th><th>Customer</th><th>Total</th><th>Status</th></tr>${rows.map(o=>`<tr><td>${o.id}</td><td>${o.customer_name}<br>${o.customer_phone}</td><td>${money(o.total_amount)}</td><td>${o.status}</td></tr>`).join("")}</table>`;}).catch(err=>document.getElementById("orders").textContent=err.message);
-</script></body></html>
+</script>
+  <script src="/js/footer.js"></script>
+</body></html>
