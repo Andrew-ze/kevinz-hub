@@ -20,4 +20,7 @@ document.getElementById("checkout").addEventListener("submit", async e=>{
   location.href=`/payment.html?order_id=${result.order_id}&amount=${result.total_amount}`;
  } catch(err){document.getElementById("message").textContent=err.message;}
 });
-</script></body></html>
+</script>
+ <script src="/js/footer.js"></script>
+</body>
+</html>
