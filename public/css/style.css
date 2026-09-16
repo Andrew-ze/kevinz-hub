@@ -41,3 +41,120 @@ footer { padding: 35px 0; border-top: 1px solid #2a2a36; color: var(--muted); ma
 table { width: 100%; border-collapse: collapse; background: var(--panel); }
 th, td { padding: 12px; border-bottom: 1px solid #343341; text-align: left; }
 @media(max-width: 700px) { .nav-inner { align-items: flex-start; flex-direction: column; } .nav-links { gap: 12px; } }
+
+/* Footer */
+footer {
+  background: #101017;
+  border-top: 1px solid #343341;
+  margin-top: 70px;
+  padding: 55px 0 25px;
+}
+
+.footer-container {
+  width: min(1120px, 92%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr;
+  gap: 45px;
+}
+
+.footer-column h3 {
+  color: var(--gold);
+  font-size: 1.05rem;
+  margin-bottom: 18px;
+}
+
+.footer-column p {
+  color: var(--muted);
+  line-height: 1.8;
+  font-size: 0.9rem;
+}
+
+.footer-logo {
+  display: inline-block;
+  color: var(--gold);
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.footer-small {
+  margin-top: 25px;
+  font-size: 0.8rem !important;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+.footer-column a {
+  color: var(--muted);
+}
+
+.footer-column a:hover {
+  color: var(--gold);
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  border-radius: 6px;
+  color: white !important;
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+}
+
+.social-icon {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.whatsapp {
+  background: #128c45;
+}
+
+.tiktok {
+  background: #22222b;
+  border: 1px solid #444451;
+}
+
+@media (max-width: 800px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 550px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
