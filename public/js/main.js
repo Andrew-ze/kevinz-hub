@@ -9,20 +9,47 @@ async function getJSON(url, options = {}) {
   if (!response.ok) throw new Error(data.message || "Request failed.");
   return data;
 }
-
 function productCard(product) {
+  const message = encodeURIComponent(
+    `Hello Kevinz Hub, I am interested in ${product.name}. Please provide more details.`
+  );
+
   return `
     <article class="card">
-      <img src="${product.image_url || 'https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?auto=format&fit=crop&w=700&q=80'}" alt="${product.name}">
+      <img
+        src="${product.image_url || 'https://images.unsplash.com/photo-1523779917675-b6ed3a42a561?auto=format&fit=crop&w=700&q=80'}"
+        alt="${product.name}"
+      >
+
       <div class="card-body">
         <p class="muted">${product.category}</p>
+
         <h3>${product.name}</h3>
+
         <p>${product.description || ""}</p>
+
         <div class="price">${money(product.price)}</div>
-        <button class="btn" onclick='addToCart(${JSON.stringify(product)})'>Add to cart</button>
+
+        <button
+          class="btn"
+          onclick='addToCart(${JSON.stringify(product)})'
+        >
+          Add to Cart
+        </button>
+
+        <a
+          class="btn secondary"
+          href="https://wa.me/256755134204?text=${message}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ask on WhatsApp
+        </a>
       </div>
-    </article>`;
+    </article>
+  `;
 }
+
 
 function addToCart(product) {
   const cart = JSON.parse(localStorage.getItem("kevinz_cart") || "[]");
