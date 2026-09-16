@@ -4,4 +4,6 @@
 <script src="/js/main.js"></script><script>
 getJSON("/api/auth/me").then(data=>{if(!data.admin) location.href="/login.html"; else document.getElementById("status").textContent="Logged in as "+data.admin.email;});
 function logout(){getJSON("/api/auth/logout",{method:"POST"}).then(()=>location.href="/login.html");}
-</script></body></html>
+</script>
+  <script src="/js/footer.js"></script>
+</body></html>
