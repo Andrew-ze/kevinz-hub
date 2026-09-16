@@ -5,4 +5,6 @@
 async function load(){const rows=await getJSON("/api/payments");document.getElementById("payments").innerHTML=`<table><tr><th>ID</th><th>Order</th><th>Amount</th><th>Reference</th><th>Status</th><th>Action</th></tr>${rows.map(p=>`<tr><td>${p.id}</td><td>${p.order_id}</td><td>${money(p.amount)}</td><td>${p.payment_reference}</td><td>${p.status}</td><td><button class="btn" onclick="verify(${p.id},'Paid')">Approve</button> <button class="btn secondary" onclick="verify(${p.id},'Rejected')">Reject</button></td></tr>`).join("")}</table>`;}
 async function verify(id,status){await getJSON("/api/payments/"+id+"/status",{method:"PUT",body:JSON.stringify({status})});load();}
 load();
-</script></body></html>
+</script>
+  <script src="/js/footer.js"></script>
+</body></html>
