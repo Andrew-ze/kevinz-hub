@@ -6,4 +6,6 @@
 getJSON("/api/products").then(products => {
  document.getElementById("products").innerHTML = products.length ? products.map(productCard).join("") : "<p>No products available yet.</p>";
 }).catch(err => document.getElementById("products").innerHTML = `<p>${err.message}</p>`);
-</script></body></html>
+</script>
+ <script src="/js/footer.js"></script>
+</body></html>
